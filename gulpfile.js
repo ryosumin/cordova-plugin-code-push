@@ -216,7 +216,7 @@ gulp.task("tslint", function () {
     }
 
     return gulp.src([sourcePath + tsFiles, testPath + tsFiles])
-        .pipe(tslint({ configuration: config, formatter: "verbose" }))
+        .pipe(tslint({ configuration: "./tslint.json", formatter: "verbose" }))
         .pipe(tslint.report());
 });
 
