@@ -1,10 +1,10 @@
 
- /******************************************************************************************** 
- 	 THIS FILE HAS BEEN COMPILED FROM TYPESCRIPT SOURCES. 
- 	 PLEASE DO NOT MODIFY THIS FILE DIRECTLY AS YOU WILL LOSE YOUR CHANGES WHEN RECOMPILING. 
- 	 INSTEAD, EDIT THE TYPESCRIPT SOURCES UNDER THE WWW FOLDER, AND THEN RUN GULP. 
- 	 FOR MORE INFORMATION, PLEASE SEE CONTRIBUTING.md. 
- *********************************************************************************************/ 
+ /********************************************************************************************
+ 	 THIS FILE HAS BEEN COMPILED FROM TYPESCRIPT SOURCES.
+ 	 PLEASE DO NOT MODIFY THIS FILE DIRECTLY AS YOU WILL LOSE YOUR CHANGES WHEN RECOMPILING.
+ 	 INSTEAD, EDIT THE TYPESCRIPT SOURCES UNDER THE WWW FOLDER, AND THEN RUN GULP.
+ 	 FOR MORE INFORMATION, PLEASE SEE CONTRIBUTING.md.
+ *********************************************************************************************/
 
 
 "use strict";
@@ -240,15 +240,16 @@ var LocalPackage = (function (_super) {
                                     installModeToUse.toString(), installOptions.minimumBackgroundDuration.toString()]);
                             }
                         };
-                        var preInstallSuccess = function () {
-                            invokeSuccessAndInstall();
-                        };
-                        var preInstallFailure = function (preInstallError) {
-                            CodePushUtil.logError("Preinstall failure.", preInstallError);
-                            var error = new Error("An error has occured while installing the package. " + CodePushUtil.getErrorMessage(preInstallError));
-                            installError && installError(error);
-                        };
-                        cordova.exec(preInstallSuccess, preInstallFailure, "CodePush", "preInstall", [deployDir.fullPath]);
+                        invokeSuccessAndInstall();
+                        // var preInstallSuccess = function () {
+                        //     invokeSuccessAndInstall();
+                        // };
+                        // var preInstallFailure = function (preInstallError) {
+                        //     CodePushUtil.logError("Preinstall failure.", preInstallError);
+                        //     var error = new Error("An error has occured while installing the package. " + CodePushUtil.getErrorMessage(preInstallError));
+                        //     installError && installError(error);
+                        // };
+                        // cordova.exec(preInstallSuccess, preInstallFailure, "CodePush", "preInstall", [deployDir.fullPath]);
                     }
                 });
             });
