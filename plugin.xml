@@ -38,7 +38,7 @@
         </js-module>
 
         <js-module src="bin/www/fileUtil.js" name="fileUtil">
-            <runs/>
+            <clobbers target="FileUtil" />
         </js-module>
 
         <js-module src="bin/www/httpRequester.js" name="httpRequester">
