@@ -1,10 +1,10 @@
 
- /******************************************************************************************** 
- 	 THIS FILE HAS BEEN COMPILED FROM TYPESCRIPT SOURCES. 
- 	 PLEASE DO NOT MODIFY THIS FILE DIRECTLY AS YOU WILL LOSE YOUR CHANGES WHEN RECOMPILING. 
- 	 INSTEAD, EDIT THE TYPESCRIPT SOURCES UNDER THE WWW FOLDER, AND THEN RUN GULP. 
- 	 FOR MORE INFORMATION, PLEASE SEE CONTRIBUTING.md. 
- *********************************************************************************************/ 
+ /********************************************************************************************
+ 	 THIS FILE HAS BEEN COMPILED FROM TYPESCRIPT SOURCES.
+ 	 PLEASE DO NOT MODIFY THIS FILE DIRECTLY AS YOU WILL LOSE YOUR CHANGES WHEN RECOMPILING.
+ 	 INSTEAD, EDIT THE TYPESCRIPT SOURCES UNDER THE WWW FOLDER, AND THEN RUN GULP.
+ 	 FOR MORE INFORMATION, PLEASE SEE CONTRIBUTING.md.
+ *********************************************************************************************/
 
 
 "use strict";
@@ -83,6 +83,7 @@ var CodePush = (function () {
         });
     };
     CodePush.prototype.checkForUpdate = function (querySuccess, queryError, deploymentKey) {
+        var self = this;
         try {
             var callback = function (error, remotePackageOrUpdateNotification) {
                 if (error) {
@@ -96,7 +97,10 @@ var CodePush = (function () {
                     if (remotePackageOrUpdateNotification) {
                         if (remotePackageOrUpdateNotification.updateAppVersion) {
                             CodePushUtil.logMessage("An update is available, but it is targeting a newer binary version than you are currently running.");
-                            appUpToDate();
+                            if(self.handleBinaryVersionMismatch)
+                              self.handleBinaryVersionMismatch(remotePackageOrUpdateNotification)
+                            else
+                              appUpToDate();
                         }
                         else {
                             var remotePackage = remotePackageOrUpdateNotification;
